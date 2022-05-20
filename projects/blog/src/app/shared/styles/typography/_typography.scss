@@ -1,0 +1,36 @@
+@use 'variables/typography';
+@use 'variables/colors';
+@import url('https://fonts.googleapis.com/css?family=Poppins:400');
+
+html {font-size: typography.$base-font-size;} /*16px*/
+
+body {
+  background: white;
+  font-family: 'Poppins', sans-serif;
+  font-weight: typography.$base-font-weight;
+  line-height: typography.$base-line-height;
+  color: colors.$cod-gray-800;
+}
+
+body {margin-bottom: typography.$paragraph-font-size;}
+
+.heading1, .heading2, .heading3, .heading4, .heading5 {
+  margin: 3rem 0 typography.$headings-margin-bottom;
+  font-family: 'Poppins', sans-serif;
+  line-height: typography.$headings-line-height;
+}
+
+.heading1 {
+  margin-top: 0;
+  font-size: typography.$h1-font-size;
+}
+
+.heading2 {font-size: typography.$h2-font-size;}
+
+.heading3 {font-size: typography.$h3-font-size;}
+
+.heading4 {font-size: typography.$h4-font-size;}
+
+.heading5 {font-size: typography.$h5-font-size;}
+
+.text_small {font-size: typography.$small-font-size;}

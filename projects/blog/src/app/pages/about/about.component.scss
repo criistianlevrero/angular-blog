@@ -1,0 +1,19 @@
+.profile {
+
+  &__content {
+    display: flex;
+  }
+
+  &__image {
+    width: 300px;
+    height: auto;
+    align-self: flex-start;
+    margin-right: 1rem;
+    max-width: 30vw;
+  }
+
+  &__description {
+
+  }
+
+}

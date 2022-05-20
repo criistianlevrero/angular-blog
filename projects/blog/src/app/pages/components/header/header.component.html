@@ -1,0 +1,7 @@
+<nav class="header">
+  <ul class="header__navigation">
+    <li class="header__item" *ngFor="let item of menuItems">
+      <a [routerLink]="item.path" class="heading5 header__link">{{ item.name }}</a>
+    </li>
+  </ul>
+</nav>
