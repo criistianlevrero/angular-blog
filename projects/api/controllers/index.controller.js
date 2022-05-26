@@ -1,59 +1,59 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-    user: 'postgres',
+    user: 'angular_blog_user',
     host: 'localhost',
-    password: '',
-    database: 'firstapi',
+    password: '123579',
+    database: 'angular_blog',
     port: '5432'
 });
 
-const getUsers = async (req, res) => {
-    const response = await pool.query('SELECT * FROM users ORDER BY id ASC');
+const getPosts = async (req, res) => {
+    const response = await pool.query('SELECT * FROM posts ORDER BY postId ASC');
     res.status(200).json(response.rows);
 };
 
-const getUserById = async (req, res) => {
+const getPostById = async (req, res) => {
     const id = parseInt(req.params.id);
-    const response = await pool.query('SELECT * FROM users WHERE id = $1', [id]);
+    const response = await pool.query('SELECT * FROM posts WHERE postId = $1', [id]);
     res.json(response.rows);
 };
 
-const createUser = async (req, res) => {
+const createPost = async (req, res) => {
     const { name, email } = req.body;
-    const response = await pool.query('INSERT INTO users (name, email) VALUES ($1, $2)', [name, email]);
+    const response = await pool.query('INSERT INTO posts (name, email) VALUES ($1, $2)', [name, email]);
     res.json({
-        message: 'User Added successfully',
+        message: 'Post Added successfully',
         body: {
             user: {name, email}
         }
     })
 };
 
-const updateUser = async (req, res) => {
+const updatePost = async (req, res) => {
     const id = parseInt(req.params.id);
     const { name, email } = req.body;
 
-    const response =await pool.query('UPDATE users SET name = $1, email = $2 WHERE id = $3', [
+    const response =await pool.query('UPDATE posts SET name = $1, email = $2 WHERE postId = $3', [
         name,
         email,
         id
     ]);
-    res.json('User Updated Successfully');
+    res.json('Post Updated Successfully');
 };
 
-const deleteUser = async (req, res) => {
+const deletePost = async (req, res) => {
     const id = parseInt(req.params.id);
-    await pool.query('DELETE FROM users where id = $1', [
+    await pool.query('DELETE FROM posts where postId = $1', [
         id
     ]);
-    res.json(`User ${id} deleted Successfully`);
+    res.json(`Post ${id} deleted Successfully`);
 };
 
 module.exports = {
-    getUsers,
-    getUserById,
-    createUser,
-    updateUser,
-    deleteUser
+    getPosts,
+    getPostById,
+    createPost,
+    updatePost,
+    deletePost
 };
