@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PostComponent } from './post/post.component';
+import { PostEditComponent } from './post-edit/post-edit.component';
 
 
 
 @NgModule({
   declarations: [
     DashboardComponent,
-    PostComponent
+    PostEditComponent,
   ],
   imports: [
     CommonModule

@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-post-editor',
   templateUrl: './post-editor.component.html',
   styleUrls: ['./post-editor.component.scss']
 })
-export class PostEditorComponent implements OnInit {
+export class PostEditorComponent  {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
+
 
 }
