@@ -1,0 +1,30 @@
+@use 'variables/colors';
+
+.mat-table {
+  width: 100%;
+}
+
+.mat-column-id {
+  width: 60px;
+}
+
+.mat-column-published {
+  width: 80px;
+}
+
+.mat-row:hover {
+  background: colors.$cod-gray-100;
+  cursor: pointer;
+}
+
+.create-post {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+
+  &__label {
+    margin-right: 1rem;
+  }
+}

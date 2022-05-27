@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminLayoutComponent } from './admin/admin-layout/admin-layout.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PostEditComponent } from './admin/post-edit/post-edit.component';
 import { AboutComponent } from './pages/about/about.component';
@@ -20,12 +21,13 @@ const routes: Routes = [
         }
       ]
       },
-    { path: 'admin', component: DashboardComponent,
-      children: [
-        {path: 'edit-post', component: PostEditComponent}
-      ]
-    },
   ]},
+  { path: 'admin', component: AdminLayoutComponent,
+    children: [
+      {path: '', component: DashboardComponent},
+      {path: 'edit-post', component: PostEditComponent}
+    ]
+  },
 ];
 
 @NgModule({
