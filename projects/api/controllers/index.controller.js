@@ -9,13 +9,13 @@ const pool = new Pool({
 });
 
 const getPosts = async (req, res) => {
-    const response = await pool.query('SELECT * FROM posts ORDER BY postId ASC');
+    const response = await pool.query('SELECT * FROM posts ORDER BY "postId" ASC');
     res.status(200).json(response.rows);
 };
 
 const getPostById = async (req, res) => {
     const id = parseInt(req.params.id);
-    const response = await pool.query('SELECT * FROM posts WHERE postId = $1', [id]);
+    const response = await pool.query('SELECT * FROM posts WHERE "postId" = $1', [id]);
     res.json(response.rows);
 };
 
@@ -34,7 +34,7 @@ const updatePost = async (req, res) => {
     const id = parseInt(req.params.id);
     const { name, email } = req.body;
 
-    const response =await pool.query('UPDATE posts SET name = $1, email = $2 WHERE postId = $3', [
+    const response =await pool.query('UPDATE posts SET name = $1, email = $2 WHERE "postId" = $3', [
         name,
         email,
         id
@@ -44,7 +44,7 @@ const updatePost = async (req, res) => {
 
 const deletePost = async (req, res) => {
     const id = parseInt(req.params.id);
-    await pool.query('DELETE FROM posts where postId = $1', [
+    await pool.query('DELETE FROM posts where "postId" = $1', [
         id
     ]);
     res.json(`Post ${id} deleted Successfully`);
