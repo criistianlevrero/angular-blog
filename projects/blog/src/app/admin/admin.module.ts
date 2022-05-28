@@ -5,6 +5,7 @@ import { PostEditComponent } from './post-edit/post-edit.component';
 import { AngularModule } from './modules/angular.module';
 import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { RouterModule } from '@angular/router';
+import { CKEditorModule } from 'ckeditor4-angular';
 
 
 
@@ -18,6 +19,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     AngularModule,
     RouterModule,
+    CKEditorModule
   ]
 })
 export class AdminModule { }
