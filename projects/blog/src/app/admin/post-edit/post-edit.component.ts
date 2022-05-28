@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { PostsService } from '../../shared/services/posts/posts.service';
+import { Post } from '../../shared/interfaces/posts';
+
+
 @Component({
   selector: 'app-post-edit',
   templateUrl: './post-edit.component.html',
@@ -8,21 +12,43 @@ import { FormControl } from '@angular/forms';
 })
 export class PostEditComponent implements OnInit {
 
-  public postId: string | undefined;
+  postIdParam: number | undefined | string;
 
   postName = new FormControl('');
-  postVisibility = new FormControl('');
+  postPublished = new FormControl('');
 
-  constructor(private _activatedRoute :ActivatedRoute) {
+  isNewPost = true;
+
+  postModel: Post = {
+    postContent: '',
+    postId: 0,
+    postPublished: false,
+    postTitle: '',
+  };
+
+  constructor(private _activatedRoute :ActivatedRoute, private _postService :PostsService) {
   }
 
   ngOnInit() {
     this._activatedRoute.params.subscribe((params) => {
-      this.postId = params["postId"];
+      const paramsPostId = params["postId"];
+      this.postIdParam = paramsPostId
+
+      if (paramsPostId !== 'new') {
+        this._postService.getSingle(paramsPostId as number).subscribe(
+          (post)=> this.onGetPost(post)
+        );
+      }
+
     });
 
-    //this.name.setValue('Nancy'); pa cuando vengan datos
+  }
 
+  onGetPost(postData:Post):void {
+    this.postModel = postData;
+    this.postName.setValue(this.postModel.postTitle);
+    this.postPublished.setValue(this.postModel.postPublished);
+    this.isNewPost = false;
   }
 
 

@@ -4,6 +4,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { PostsService } from '../../shared/services/posts/posts.service';
 
 @NgModule({
   declarations: [],
@@ -19,6 +20,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatButtonModule,
     MatInputModule,
     MatSlideToggleModule,
-  ]
+  ],
+  providers: [PostsService]
 })
 export class MaterialModule { }

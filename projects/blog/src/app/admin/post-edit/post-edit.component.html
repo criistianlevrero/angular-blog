@@ -1,4 +1,4 @@
-<h1 class="heading2">Edit Post {{ postId }}</h1>
+<h1 class="heading2">{{ isNewPost ? 'New Post' : 'Edit Post'}}</h1>
 <form class="form">
   <div class="form__name-row">
     <mat-form-field class="form__input-name" appearance="fill">
@@ -6,9 +6,9 @@
       <input matInput [formControl]="postName">
     </mat-form-field>
     <div class="form__input-visible-wrapper">
-      <mat-slide-toggle [formControl]="postVisibility">Visible</mat-slide-toggle>
+      <mat-slide-toggle [formControl]="postPublished">Visible</mat-slide-toggle>
     </div>
   </div>
-  <ckeditor data="<p>Hello, world!</p>"></ckeditor>
+  <ckeditor [data]="postModel.postContent"></ckeditor>
 
 </form>

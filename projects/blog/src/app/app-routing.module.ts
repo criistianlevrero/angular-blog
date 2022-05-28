@@ -5,11 +5,11 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { PostEditComponent } from './admin/post-edit/post-edit.component';
 import { AboutComponent } from './pages/about/about.component';
 import { HomeComponent } from './pages/home/home.component';
-import { MainComponent } from './pages/main/main.component';
+import { PagesLayoutComponent } from './pages/main/pages-layout.component';
 import { PostComponent } from './pages/post/post.component';
 
 const routes: Routes = [
-  { path: '', component: MainComponent,
+  { path: '', component: PagesLayoutComponent,
   children: [
     { path: '', component: HomeComponent, },
     { path: 'about', component: AboutComponent },
