@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminLayoutComponent,
     children: [
       {path: '', component: DashboardComponent},
-      {path: 'edit-post', component: PostEditComponent}
+      {path: 'edit-post/:postId', component: PostEditComponent }
     ]
   },
 ];

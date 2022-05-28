@@ -1,2 +1,14 @@
-<p>post-edit works!</p>
-<ckeditor data="<p>Hello, world!</p>"></ckeditor>
+<h1 class="heading2">Edit Post {{ postId }}</h1>
+<form class="form">
+  <div class="form__name-row">
+    <mat-form-field class="form__input-name" appearance="fill">
+      <mat-label>Post title</mat-label>
+      <input matInput [formControl]="postName">
+    </mat-form-field>
+    <div class="form__input-visible-wrapper">
+      <mat-slide-toggle [formControl]="postVisibility">Visible</mat-slide-toggle>
+    </div>
+  </div>
+  <ckeditor data="<p>Hello, world!</p>"></ckeditor>
+
+</form>

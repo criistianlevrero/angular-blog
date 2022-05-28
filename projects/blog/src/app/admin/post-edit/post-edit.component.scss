@@ -1,0 +1,17 @@
+.form {
+
+  &__name-row {
+    display: flex;
+  }
+
+  &__input-name {
+    width: 80%;
+  }
+
+  &__input-visible-wrapper {
+    width: 20%;
+    text-align: center;
+    padding-top: 1rem;
+  }
+
+}
