@@ -1,14 +1,21 @@
-<h1 class="heading2">{{ isNewPost ? 'New Post' : 'Edit Post'}}</h1>
-<form class="form">
+<app-breadcrumb [breadcrumbData]="breadcrumb"></app-breadcrumb>
+
+<h1 class="heading3">{{ isNewPost ? 'New Post' : 'Edit Post'}}</h1>
+<form class="form" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <div class="form__name-row">
     <mat-form-field class="form__input-name" appearance="fill">
       <mat-label>Post title</mat-label>
-      <input matInput [formControl]="postName">
+      <input matInput [formControlName]="'postName'">
     </mat-form-field>
     <div class="form__input-visible-wrapper">
-      <mat-slide-toggle [formControl]="postPublished">Visible</mat-slide-toggle>
+      <mat-slide-toggle [formControlName]="'postPublished'">Visible</mat-slide-toggle>
     </div>
   </div>
   <ckeditor [data]="postModel.postContent"></ckeditor>
 
+  <div class="form__save-row">
+    <button mat-fab type="submit" [disabled]="!formGroup.valid" color="accent" aria-label="Example icon button with a bookmark icon">
+      Save
+    </button>
+  </div>
 </form>

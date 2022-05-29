@@ -7,6 +7,7 @@ import { PagesModule } from './pages/pages.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminModule } from './admin/admin.module';
+import { PostsService } from './shared/services/posts/posts.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { AdminModule } from './admin/admin.module';
     AdminModule,
     BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [PostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

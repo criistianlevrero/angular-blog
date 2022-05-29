@@ -7,6 +7,7 @@ import { AdminLayoutComponent } from './admin-layout/admin-layout.component';
 import { RouterModule } from '@angular/router';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 
 
@@ -15,6 +16,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DashboardComponent,
     PostEditComponent,
     AdminLayoutComponent,
+    BreadcrumbComponent,
   ],
   imports: [
     CommonModule,

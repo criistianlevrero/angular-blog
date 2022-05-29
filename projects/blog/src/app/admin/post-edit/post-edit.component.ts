@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { PostsService } from '../../shared/services/posts/posts.service';
 import { Post } from '../../shared/interfaces/posts';
+import { Breadcrumb } from '../components/breadcrumb/breadcrumb';
 
 
 @Component({
@@ -14,17 +15,24 @@ export class PostEditComponent implements OnInit {
 
   postIdParam: number | undefined | string;
 
-  postName = new FormControl('');
-  postPublished = new FormControl('');
+  formGroup = new FormGroup({
+    postName: new FormControl(''),
+    postPublished: new FormControl(''),
+  });
 
   isNewPost = true;
 
   postModel: Post = {
     postContent: '',
     postId: 0,
-    postPublished: false,
+    postPublished: true,
     postTitle: '',
   };
+
+  breadcrumb: Breadcrumb[] = [
+    { label: "Dashboard", route: "/admin" },
+    { label: "Post edit" },
+  ]
 
   constructor(private _activatedRoute :ActivatedRoute, private _postService :PostsService) {
   }
@@ -35,22 +43,27 @@ export class PostEditComponent implements OnInit {
       this.postIdParam = paramsPostId
 
       if (paramsPostId !== 'new') {
-        this._postService.getSingle(paramsPostId as number).subscribe(
-          (post)=> this.onGetPost(post)
+        this._postService.getSingle(paramsPostId as number).subscribe({
+          next: (post)=> this.onGetPost(post),
+          error: (error)=> window.alert('DB connection error')
+        }
         );
       }
 
     });
-
   }
 
   onGetPost(postData:Post):void {
     this.postModel = postData;
-    this.postName.setValue(this.postModel.postTitle);
-    this.postPublished.setValue(this.postModel.postPublished);
+    this.formGroup.setValue({
+      postName: this.postModel.postTitle,
+      postPublished: this.postModel.postPublished
+    });
     this.isNewPost = false;
   }
 
-
+  onSubmit(){
+    console.log(this.formGroup.value)
+  }
 
 }

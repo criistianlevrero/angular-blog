@@ -1,0 +1,11 @@
+.breadcrumb {
+  &__list {
+    display: flex;
+  }
+  &__item {
+    margin-right: 1rem;
+    &::after {
+      content: ">";
+    }
+  }
+}

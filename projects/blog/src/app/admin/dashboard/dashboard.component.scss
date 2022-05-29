@@ -4,12 +4,23 @@
   width: 100%;
 }
 
-.mat-column-id {
-  width: 60px;
+.mat-column-postId {
+  width: 80px;
 }
 
-.mat-column-published {
+.mat-column-postPublished {
   width: 80px;
+}
+
+.mat-cell {
+  vertical-align: middle;
+}
+.mat-column-edit {
+  width: 80px;
+}
+
+.mat-header-cell {
+  vertical-align: middle;
 }
 
 .mat-row:hover {
@@ -22,7 +33,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  margin-bottom: 1rem;
+  margin: 2rem 1rem 0 0;
 
   &__label {
     margin-right: 1rem;

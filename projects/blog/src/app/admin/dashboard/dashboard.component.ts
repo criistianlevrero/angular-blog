@@ -1,30 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Post } from '../../shared/interfaces/posts';
+import { PostsService } from '../../shared/services/posts/posts.service';
 
-export interface PeriodicElement {
-  id: number;
-  title: string;
-  published: boolean;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {id: 1, title: 'Hydrogen', published: true},
-  {id: 1, title: 'Hydrogen', published: true},
-  {id: 1, title: 'Hydrogen', published: true},
-  {id: 1, title: 'Hydrogen', published: true},
-  {id: 1, title: 'Hydrogen', published: true},
-  {id: 1, title: 'Hydrogen', published: true},
-  {id: 1, title: 'Hydrogen', published: true},
-
-];
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent  {
-  displayedColumns: string[] = ['id', 'title', 'published'];
-  dataSource = ELEMENT_DATA;
-  constructor() { }
+export class DashboardComponent implements OnInit  {
+  displayedColumns: string[] = ['postId', 'postTitle', 'postPublished', 'edit'];
 
+  allPosts!: Post[];
+
+  constructor(private _postService :PostsService) { }
+
+  ngOnInit() {
+    this._postService.getAll().subscribe({
+      next: (post)=> this.allPosts = post,
+      error: (error)=> window.alert('DB connection error')
+    });
+  }
+
+  onClickItem(element: any):void {
+    console.log(element);
+  }
 }
